@@ -9,7 +9,6 @@ import { Card } from "../components/UI/Card";
 
 import { finishResult } from "../utils/resultTest";
 
-
 export const Testing = () => {
   const navigation = useNavigate();
 
@@ -153,9 +152,22 @@ export const Testing = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [userAnswer, setUserAnswer] = useState<IUserAnswer[]>([]);
 
+  const [over, setOver] = useState(false);
+  const savedCurrentQuest = localStorage.getItem("indexQuest");
+  
+  useEffect(()=>{
+    if(savedCurrentQuest){
+      setCurrentIndex(Number(savedCurrentQuest))
+    }
+  },[])
+
   useEffect(() => {
     getQuest(currentIndex);
-  }, [currentIndex]);
+  }, [currentIndex, savedCurrentQuest]);
+  
+  useEffect(()=>{
+    // navigateToFinish(count, questions.length)
+  },[over])
 
   const getQuest = (currentIndex: Number) => {
     const quest = questions.find((_, index) => index === currentIndex);
@@ -181,13 +193,14 @@ export const Testing = () => {
       },
     ]);
     setCurrentIndex((currentIndex) => currentIndex + 1);
+    localStorage.setItem("indexQuest", `${currentIndex+1}`);
   };
 
   return (
     <>
       <div className="header-flex">
         <h1>Тестирование</h1>
-        <Timer minutes={30} />
+        <Timer minutes={30} over={over} setOver={setOver} />
       </div>
       <div className="content-flex-column">
         <div className="content-flex">
