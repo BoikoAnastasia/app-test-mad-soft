@@ -12,7 +12,18 @@ export interface ITimer {
 }
 
 export interface FinishProps {
-    count: number;
-    questionsLength: number;
+  count: number;
+  questionsLength: number;
+}
+
+export interface ICurrentQuest {
+    question: string;
+    options: {
+      A: string;
+      B: string;
+      C: string;
+      D: string;
+    };
+    answer: string;
+    type: string;
   }
-  

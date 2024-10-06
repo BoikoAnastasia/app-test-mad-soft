@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { ICurrentQuest } from "../../types/share";
 import { ImageAnswer } from "../typesQuestion/ImageAnswer";
 import { InputAnswer } from "../typesQuestion/InputAnswer";
 import { ManyAnswer } from "../typesQuestion/ManyAnswer";
@@ -6,17 +7,7 @@ import { OneAnswer } from "../typesQuestion/OneAnswer";
 import { SequenceAnswer } from "../typesQuestion/SequenceAnswer";
 import { ShoiceAnswer } from "../typesQuestion/ShoiceAnswer";
 
-interface ICurrentQuest {
-  question: string;
-  options: {
-    A: string;
-    B: string;
-    C: string;
-    D: string;
-  };
-  answer: string;
-  type: string;
-}
+
 
 export const Card = ({
   currentQuest,
@@ -44,9 +35,9 @@ export const Card = ({
     if (type === "oneAnswer") {
       return <OneAnswer options={options} handleChange={handleChange} />;
     }
-    // if(type === 'manyAnswer'){
-    //     return <ManyAnswer options={options}/>
-    // }
+    if(type === 'manyAnswer'){
+        return <ManyAnswer options={options} handleChange={handleChange}/>
+    }
     // if(type === 'inputAnswer'){
     //     return <InputAnswer options={options}/>
     // }

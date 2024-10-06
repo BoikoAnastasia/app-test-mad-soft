@@ -167,7 +167,7 @@ export const Testing = () => {
     if (savedCurrentQuest) {
       setCurrentIndex(Number(savedCurrentQuest));
     }
-  }, []);
+  }, [savedCurrentQuest]);
 
   useEffect(() => {
     getQuest(currentIndex);
@@ -212,7 +212,6 @@ export const Testing = () => {
   return (
     <>
       <div className="header-flex">
-        {/* {!testComplete && <p>Вы не можете покинуть эту страничку, пока не завершите тест.</p>} */}
         <h1>Тестирование</h1>
         <Timer seconds={30} over={over} setOver={setOver} />
       </div>

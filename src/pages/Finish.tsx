@@ -9,6 +9,7 @@ export const Finish: FC = () => {
   const state = location.state as FinishProps | undefined; 
 
   useEffect(() => { 
+    localStorage.clear()
     if (!state) { 
       navigate("/", { replace: true }); 
     } 
