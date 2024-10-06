@@ -17,13 +17,15 @@ export interface FinishProps {
 }
 
 export interface ICurrentQuest {
-    question: string;
-    options: {
-      A: string;
-      B: string;
-      C: string;
-      D: string;
-    };
-    answer: string;
-    type: string;
-  }
+  question: string;
+  options:
+    | {
+        A?: string;
+        B?: string;
+        C?: string;
+        D?: string;
+      }
+    | {};
+  answer: string;
+  type: string;
+}

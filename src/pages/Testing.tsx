@@ -19,16 +19,10 @@ export const Testing = () => {
       options: {
         A: "stop",
         B: "speed up",
-        C: "proceed with caution",
-        D: "honk the horn",
+        C: "proceed with caution"
       },
       answer: "A",
       type: "oneAnswer",
-      //   type: "manyAnswer",
-      //   type: "inputAnswer",
-      //   type: "sequenceAnswer",
-      //   type: "shoiceAnswer",
-      //   type: "imageAnswer",
     },
     {
       question: "A knish is traditionally stuffed with what filling?",
@@ -38,31 +32,25 @@ export const Testing = () => {
         C: "lemon custard",
         D: "raspberry jelly",
       },
-      answer: "A",
-      type: "oneAnswer",
+      answer: "A, B, C",
+      type: "manyAnswer",
     },
     {
       question: "A pita is a type of what?",
-      options: {
-        A: "fresh fruit",
-        B: "flat bread",
-        C: "French tart",
-        D: "friend bean dip",
-      },
-      answer: "B",
-      type: "oneAnswer",
+      options: {},
+      answer: "fruit",
+      type: "inputAnswer",
     },
     {
       question:
         "A portrait that comically exaggerates a person's physical traits is called a what?",
       options: {
-        A: "landscape",
-        B: "caricature",
-        C: "still life",
-        D: "Impressionism",
+        A: "https://res.cloudinary.com/stealthman22/image/upload/v1586308024/new-portfolio/hero/time-lapse-photography-of-waterfalls-during-sunset-210186.jpg",
+        B: "https://img.freepik.com/free-photo/abstract-autumn-beauty-multi-colored-leaf-vein-pattern-generated-by-ai_188544-9871.jpg",
+        C: "https://thumbs.dreamstime.com/b/woman-praying-free-birds-to-nature-sunset-background-woman-praying-free-birds-enjoying-nature-sunset-99680945.jpg",
       },
       answer: "B",
-      type: "oneAnswer",
+      type: "imageAnswer",
     },
     {
       question: "A second-year college student is usually called a what?",
@@ -73,7 +61,7 @@ export const Testing = () => {
         D: "junior ",
       },
       answer: "A",
-      type: "oneAnswer",
+      type: "manyAnswer",
     },
     {
       question:
@@ -84,8 +72,8 @@ export const Testing = () => {
         C: "doctor",
         D: "accountant",
       },
-      answer: "A",
-      type: "oneAnswer",
+      answer: "A, C",
+      type: "manyAnswer",
     },
     {
       question:
@@ -213,7 +201,7 @@ export const Testing = () => {
     <>
       <div className="header-flex">
         <h1>Тестирование</h1>
-        <Timer seconds={30} over={over} setOver={setOver} />
+        <Timer minutes={30} over={over} setOver={setOver} />
       </div>
       <div className="content-flex-column">
         <div className="content-flex">

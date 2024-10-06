@@ -39,6 +39,13 @@
   }
 }
 
+img{
+  max-width: 100%;
+}
+
+button{
+  cursor: pointer;
+}
 
 .header-flex{
   display: flex;
@@ -74,4 +81,18 @@
   border: 3px solid #7a7a7b;
   color: #7a7a7b;
   padding: 0 10px; 
+}
+
+.images{
+  width: 300px;
+}
+
+.btn{
+  background: none;
+  border: none;
+}
+
+.active-img{
+  background-color: #282c34;
+  padding: 10px;
 }
