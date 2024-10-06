@@ -1,7 +1,8 @@
+//react
 import { useState } from "react";
-
-import { ICurrentQuest } from "../../types/share";
-
+//share
+import { ICurrentQuest, IOptions } from "../../types/share";
+//components
 import { OneAnswer } from "../typesQuestion/OneAnswer";
 import { ManyAnswer } from "../typesQuestion/ManyAnswer";
 import { InputAnswer } from "../typesQuestion/InputAnswer";
@@ -12,7 +13,7 @@ export const Card = ({
   changeIndexQuest,
 }: {
   currentQuest: ICurrentQuest;
-  changeIndexQuest: (answerKey: any) => void;
+  changeIndexQuest: (answerKey: string) => void;
 }) => {
   const [answerKey, setAnswerKey] = useState<string | null>(null);
 
@@ -22,33 +23,37 @@ export const Card = ({
       return;
     }
     changeIndexQuest(answerKey);
+    setAnswerKey(null)
   };
 
   const handleChange = (value: string) => {
-    console.log(value);
     setAnswerKey(value);
   };
 
-  const typeOptions = (type: string, options: any) => {
+  const typeOptions = (type: string, options: IOptions) => {
     if (type === "oneAnswer") {
-      return <OneAnswer options={options} handleChange={handleChange} />;
+      return <OneAnswer selectedValue={answerKey} options={options} handleChange={handleChange} />;
     }
     if (type === "manyAnswer") {
-      return <ManyAnswer options={options} handleChange={handleChange} />;
+      return <ManyAnswer selectedValue={answerKey} options={options} handleChange={handleChange} />;
     }
     if (type === "inputAnswer") {
       return <InputAnswer handleChange={handleChange} />;
     }
-    if(type === 'imageAnswer'){
-        return <ImageAnswer options={options} handleChange={handleChange} />
+    if (type === "imageAnswer") {
+      return <ImageAnswer options={options} handleChange={handleChange} />;
     }
   };
 
   return (
     <div className="content-quest">
       <h3>{currentQuest.question}</h3>
-      {typeOptions(currentQuest.type, currentQuest.options)}
-      <button onClick={getAnswer}>Отправить</button>
+      <div className="content-quests">
+        {typeOptions(currentQuest.type, currentQuest.options)}
+      </div>
+      <button className="btn" onClick={getAnswer}>
+        Отправить
+      </button>
     </div>
   );
 };

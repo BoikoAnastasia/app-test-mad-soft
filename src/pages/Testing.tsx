@@ -1,12 +1,16 @@
+//react
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 
-import { IUserAnswer } from "../types/share";
-
+//components
 import { Slider } from "../components/UI/Slider";
 import { Timer } from "../components/UI/Timer";
 import { Card } from "../components/UI/Card";
 
+//share
+import { IUserAnswer } from "../types/share";
+
+//utils
 import { finishResult } from "../utils/resultTest";
 
 export const Testing = () => {
@@ -19,7 +23,7 @@ export const Testing = () => {
       options: {
         A: "stop",
         B: "speed up",
-        C: "proceed with caution"
+        C: "proceed with caution",
       },
       answer: "A",
       type: "oneAnswer",
@@ -177,11 +181,11 @@ export const Testing = () => {
   };
 
   const navigateToFinish = (count: number, questionsLength: number) => {
-    setTestComplete(true)
+    setTestComplete(true);
     navigate("/finish", { state: { count, questionsLength } });
   };
 
-  const changeIndexQuest = (answerKey: any) => {
+  const changeIndexQuest = (answerKey: string) => {
     if (currentIndex === questions.length - 1) {
       const count = finishResult(questions, userAnswer);
       return navigateToFinish(count, questions.length);

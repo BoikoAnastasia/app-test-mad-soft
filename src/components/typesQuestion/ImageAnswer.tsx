@@ -18,7 +18,7 @@ export const ImageAnswer = ({
       <> 
         {Object.keys(options).map((key: any) => ( 
           <button 
-            className={`btn ${activeKey === key ? 'active-img' : ''}`} 
+            className={` ${activeKey === key ? 'active-img' : ''}`} 
             key={key} 
             onClick={() => handleImages(key)}
           > 

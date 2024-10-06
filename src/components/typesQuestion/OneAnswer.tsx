@@ -1,20 +1,31 @@
-export const OneAnswer = ({ options, handleChange }: 
-    { options: any, handleChange: (e:any) => void }) => {
-    
-    
-      const handleChangeRadio = (e: any) => {
-        const {value} = e.target;
-        handleChange(value)
-      };
+export const OneAnswer = ({ 
+  options, 
+  selectedValue, 
+  handleChange, 
+}: { 
+  options: any; 
+  selectedValue: string | null; 
+  handleChange: (e: string) => void; 
+}) => { 
+  const handleChangeRadio = (e: React.ChangeEvent<HTMLInputElement>) => { 
+    const { value } = e.target; 
+    handleChange(value); 
+  }; 
 
-    return (
-    <>
-      {Object.keys(options).map((key: any, i: any) => (
-        <div key={key}>
-          <span>{options[key]}</span>
-          <input type="radio" name="answerOne" value={key} onChange={handleChangeRadio}/>
-        </div>
-      ))}
-    </>
-  );
+  return ( 
+    <> 
+      {Object.keys(options).map((key: string) => (
+        <div key={key}> 
+          <input 
+            type="radio" 
+            name="answerOne" 
+            value={key} 
+            checked={selectedValue === key}
+            onChange={handleChangeRadio} 
+          /> 
+          <span>{options[key]}</span> 
+        </div> 
+      ))} 
+    </> 
+  ); 
 };

@@ -1,5 +1,7 @@
-import { useLocation, useNavigate } from "react-router-dom";
+//react
 import { FC, useEffect } from "react";
+import { useLocation, useNavigate } from "react-router-dom";
+//share
 import { FinishProps } from "../types/share";
 
 export const Finish: FC = () => {  

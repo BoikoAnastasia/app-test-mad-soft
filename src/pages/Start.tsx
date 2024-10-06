@@ -9,7 +9,7 @@ export const Start = () => {
   return (
     <>
       <h1>Тестирование</h1>
-      <button onClick={() => navigate("/test")}>Начать тест</button>
+      <button className="btn" onClick={() => navigate("/test")}>Начать тест</button>
     </>
   );
 };

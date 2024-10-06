@@ -18,14 +18,11 @@ export interface FinishProps {
 
 export interface ICurrentQuest {
   question: string;
-  options:
-    | {
-        A?: string;
-        B?: string;
-        C?: string;
-        D?: string;
-      }
-    | {};
+  options: IOptions | {};
   answer: string;
   type: string;
 }
+
+export interface IOptions {
+    [option: string]: string;
+  }
