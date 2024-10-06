@@ -1,20 +1,31 @@
-import { FC } from "react";
-import { useLocation } from "react-router-dom";
-interface FinishProps {
-  count: number;
-  questionsLength: number;
-}
+import { useLocation, useNavigate } from "react-router-dom";
+import { FC, useEffect } from "react";
+import { FinishProps } from "../types/share";
 
-export const Finish: FC = () => {
-    const location = useLocation();
-  const { count, questionsLength } = location.state as FinishProps;
+export const Finish: FC = () => {  
+  const navigate = useNavigate();  
+  const location = useLocation();
+  
+  const state = location.state as FinishProps | undefined; 
 
-  return (
-    <>
-      <h1>Результаты:</h1>
-      <span>
-        Ты набрал: {count} из {questionsLength}
-      </span>
-    </>
-  );
+  useEffect(() => { 
+    if (!state) { 
+      navigate("/", { replace: true }); 
+    } 
+  }, [state, navigate]); 
+
+  if (!state) { 
+    return null; 
+  } 
+
+  const { count, questionsLength } = state;  
+  
+  return ( 
+    <> 
+      <h1>Результаты:</h1> 
+      <span> 
+        Ты набрал: {count} из {questionsLength} 
+      </span> 
+    </> 
+  ); 
 };

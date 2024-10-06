@@ -10,7 +10,7 @@ import { Card } from "../components/UI/Card";
 import { finishResult } from "../utils/resultTest";
 
 export const Testing = () => {
-  const navigation = useNavigate();
+  const navigate = useNavigate();
 
   const questions = [
     {
@@ -154,24 +154,32 @@ export const Testing = () => {
 
   const [over, setOver] = useState(false);
   const savedCurrentQuest = localStorage.getItem("indexQuest");
-  
-  useEffect(()=>{
-    if(savedCurrentQuest){
-      setCurrentIndex(Number(savedCurrentQuest))
+
+  const [testComplete, setTestComplete] = useState(false);
+
+  useEffect(() => {
+    if (!testComplete) {
+      navigate("/test");
     }
-  },[])
+  }, [testComplete, navigate]);
+
+  useEffect(() => {
+    if (savedCurrentQuest) {
+      setCurrentIndex(Number(savedCurrentQuest));
+    }
+  }, []);
 
   useEffect(() => {
     getQuest(currentIndex);
   }, [currentIndex, savedCurrentQuest]);
-  
-  useEffect(()=>{
-    if(over){
+
+  useEffect(() => {
+    if (over) {
       let sliceIndex = questions.length - currentIndex;
-      const count = finishResult(questions.slice(0, sliceIndex), userAnswer)
-      return navigateToFinish(count, questions.length)
+      const count = finishResult(questions.slice(0, sliceIndex), userAnswer);
+      return navigateToFinish(count, questions.length);
     }
-  },[over])
+  }, [over]);
 
   const getQuest = (currentIndex: Number) => {
     const quest = questions.find((_, index) => index === currentIndex);
@@ -181,7 +189,8 @@ export const Testing = () => {
   };
 
   const navigateToFinish = (count: number, questionsLength: number) => {
-    navigation("/finish", { state: { count, questionsLength } });
+    setTestComplete(true)
+    navigate("/finish", { state: { count, questionsLength } });
   };
 
   const changeIndexQuest = (answerKey: any) => {
@@ -197,12 +206,13 @@ export const Testing = () => {
       },
     ]);
     setCurrentIndex((currentIndex) => currentIndex + 1);
-    localStorage.setItem("indexQuest", `${currentIndex+1}`);
+    localStorage.setItem("indexQuest", `${currentIndex + 1}`);
   };
 
   return (
     <>
       <div className="header-flex">
+        {/* {!testComplete && <p>Вы не можете покинуть эту страничку, пока не завершите тест.</p>} */}
         <h1>Тестирование</h1>
         <Timer seconds={30} over={over} setOver={setOver} />
       </div>

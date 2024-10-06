@@ -10,3 +10,9 @@ export interface ITimer {
   over: boolean;
   setOver: (over: boolean) => void;
 }
+
+export interface FinishProps {
+    count: number;
+    questionsLength: number;
+  }
+  
