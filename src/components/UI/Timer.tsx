@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+
 import { ITimer } from "../../types/share";
 
 export const Timer = ({

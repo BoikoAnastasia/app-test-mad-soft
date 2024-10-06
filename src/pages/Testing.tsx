@@ -166,7 +166,11 @@ export const Testing = () => {
   }, [currentIndex, savedCurrentQuest]);
   
   useEffect(()=>{
-    // navigateToFinish(count, questions.length)
+    if(over){
+      let sliceIndex = questions.length - currentIndex;
+      const count = finishResult(questions.slice(0, sliceIndex), userAnswer)
+      return navigateToFinish(count, questions.length)
+    }
   },[over])
 
   const getQuest = (currentIndex: Number) => {
@@ -200,7 +204,7 @@ export const Testing = () => {
     <>
       <div className="header-flex">
         <h1>Тестирование</h1>
-        <Timer minutes={30} over={over} setOver={setOver} />
+        <Timer seconds={30} over={over} setOver={setOver} />
       </div>
       <div className="content-flex-column">
         <div className="content-flex">
